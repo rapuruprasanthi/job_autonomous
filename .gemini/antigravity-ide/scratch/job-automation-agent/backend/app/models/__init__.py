@@ -1,0 +1,43 @@
+from app.models.entities import (
+    User,
+    CandidateProfile,
+    MasterResume,
+    Preferences,
+    Portal,
+    PortalCredential,
+    Job,
+    ResumeVersion,
+    Application,
+    Contact,
+    OutreachEmail,
+    EmailEvent,
+    ActivityLog,
+    KnowledgeEntry,
+    AgentSettings,
+    OperatingMode,
+    ApplicationStatus,
+    EmailStatus,
+    EmailClassification
+)
+
+__all__ = [
+    "User",
+    "CandidateProfile",
+    "MasterResume",
+    "Preferences",
+    "Portal",
+    "PortalCredential",
+    "Job",
+    "ResumeVersion",
+    "Application",
+    "Contact",
+    "OutreachEmail",
+    "EmailEvent",
+    "ActivityLog",
+    "KnowledgeEntry",
+    "AgentSettings",
+    "OperatingMode",
+    "ApplicationStatus",
+    "EmailStatus",
+    "EmailClassification"
+]

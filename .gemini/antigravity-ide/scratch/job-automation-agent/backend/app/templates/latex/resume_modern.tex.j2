@@ -1,0 +1,44 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{utf8}
+\usepackage[margin=0.6in]{geometry}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{enumitem}
+
+\definecolor{primary}{RGB}{139, 92, 246}
+\pagestyle{empty}
+
+\begin{document}
+
+\begin{center}
+    {\Huge \textcolor{primary}{\textbf{ {{ candidate_name|default("Candidate") }} }}} \\[4pt]
+    \small {{ candidate_email }} | {{ candidate_phone }} | {{ candidate_location }} \\[2pt]
+    \small \url{ {{ candidate_linkedin }} } | \url{ {{ candidate_github }} }
+\end{center}
+
+\vspace{6pt}
+\hrule
+\vspace{8pt}
+
+\section*{\textcolor{primary}{Skills \& Technologies}}
+{{ skills|join(" $\cdot$ ") }}
+
+\section*{\textcolor{primary}{Experience}}
+{% for exp in experience %}
+\noindent \textbf{ {{ exp.title }} }, \textit{ {{ exp.company }} } \hfill \textbf{ {{ exp.dates }} }
+\begin{itemize}[leftmargin=1.2em, noitemsep]
+    {% for bullet in exp.bullets %}
+    \item {{ bullet }}
+    {% endfor %}
+\end{itemize}
+\vspace{4pt}
+{% endfor %}
+
+\section*{\textcolor{primary}{Projects}}
+{% for proj in projects %}
+\noindent \textbf{ {{ proj.name }} } ({{ proj.tech|join(", ") }}) \\
+{{ proj.description }}
+\vspace{3pt}
+{% endfor %}
+
+\end{document}

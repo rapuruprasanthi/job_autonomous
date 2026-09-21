@@ -1,0 +1,50 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{utf8}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{hyperref}
+\usepackage{enumitem}
+
+\pagestyle{empty}
+
+\begin{document}
+
+\begin{center}
+    {\Large \textbf{ {{ candidate_name|default("Candidate") }} }} \\
+    \vspace{2pt}
+    \small {{ candidate_email|default("") }} $\cdot$ {{ candidate_phone|default("") }} $\cdot$ {{ candidate_location|default("") }} \\
+    \small \url{ {{ candidate_linkedin|default("") }} } $\cdot$ \url{ {{ candidate_github|default("") }} }
+\end{center}
+
+\vspace{-10pt}
+
+\section*{Professional Summary}
+{{ summary|default("Experienced software engineer skilled in full-stack web development.") }}
+
+\section*{Technical Skills}
+\textbf{Core Skills:} {{ skills|join(", ") }}
+
+\section*{Professional Experience}
+{% for exp in experience %}
+\noindent \textbf{ {{ exp.title }} } \hfill {{ exp.dates }} \\
+\textit{ {{ exp.company }} } \hfill \textit{ {{ exp.location|default("") }} }
+\begin{itemize}[leftmargin=1.5em, noitemsep, topsep=2pt]
+    {% for bullet in exp.bullets %}
+    \item {{ bullet }}
+    {% endfor %}
+\end{itemize}
+\vspace{4pt}
+{% endfor %}
+
+\section*{Projects}
+{% for proj in projects %}
+\noindent \textbf{ {{ proj.name }} } --- {{ proj.description }} \\
+\textit{Technologies:} {{ proj.tech|join(", ") }}
+\vspace{2pt}
+{% endfor %}
+
+\section*{Education}
+{% for edu in education %}
+\noindent \textbf{ {{ edu.degree }} }, {{ edu.institution }} \hfill {{ edu.year }} \\
+{% endfor %}
+
+\end{document}
